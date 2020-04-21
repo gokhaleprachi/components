@@ -176,6 +176,19 @@ export const generateColumns = (columns: CustomColumn[]) => {
         }
         generatedColumns.push(el)
         return generatedColumns
+      case 'invisible':
+        el = {
+          Header: '',
+          accessor: element.accessor || '',
+          className: element.className ? `${element.className} text-center` : 'text-center',
+          headerClassName: element.headerClassName || '',
+          disableSorting: element.disableSorting,
+          disableFiltering: element.disableFiltering,
+          filterPlaceholder: element.filterPlaceholder || '',
+          Cell: () => <></>,
+        }
+        generatedColumns.push(el)
+        return generatedColumns
       default:
         el = {
           Header: element.title || element.accessor || '',

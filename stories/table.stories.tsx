@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { Table, Icon, TableProperties } from '../src'
+import { Table, Icon, TableProperties, Toaster, Toast } from '../src'
 
 storiesOf('Table', module)
   .addParameters({
@@ -9,7 +9,10 @@ storiesOf('Table', module)
     },
   })
   .addDecorator((storyFn) => (
-    <div style={{ marginLeft: '2em', marginRight: '2em', textAlign: 'center' }}>{storyFn()}</div>
+    <div style={{ marginLeft: '2em', marginRight: '2em', textAlign: 'center' }}>
+      {storyFn()}
+      <Toaster autoClose={800} hideProgressBar draggable />
+    </div>
   ))
   .add('Demo Table', () => {
     const data = [
@@ -20,6 +23,9 @@ storiesOf('Table', module)
         status: 'married',
         admin: true,
         date: new Date().toString(),
+        rowOnClick: () => {
+          Toast('success', 'Row clicked!!', 'Success')
+        },
       },
       {
         firstName: 'Jack',
@@ -28,6 +34,9 @@ storiesOf('Table', module)
         status: 'single',
         admin: false,
         date: new Date().toString(),
+        rowOnClick: () => {
+          Toast('success', 'Row clicked!!', 'Success')
+        },
       },
       {
         firstName: 'Jason',
@@ -36,6 +45,9 @@ storiesOf('Table', module)
         status: 'married',
         admin: false,
         date: new Date().toString(),
+        rowOnClick: () => {
+          Toast('success', 'Row clicked!!', 'Success')
+        },
       },
     ]
 
@@ -140,6 +152,15 @@ storiesOf('Table', module)
           disableFiltering: false,
           disableSorting: false,
           filterPlaceholder: 'Search in dates',
+        },
+        {
+          accessor: 'rowOnClick',
+          type: 'invisible',
+          title: '',
+          headerClassName: '',
+          className: 'pl-3 fixoverflow',
+          disableFiltering: true,
+          disableSorting: true,
         },
       ],
     }

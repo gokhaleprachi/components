@@ -65,7 +65,7 @@ function Table({ data, tableProperties }: Props) {
           {page.map((row) => {
             prepareRow(row)
             return (
-              <tr {...row.getRowProps()}>
+              <tr {...row.getRowProps()} onClick={row.values.rowOnClick}>
                 {row.cells.map((cell: any) => (
                   <td
                     {...cell.getCellProps()}
