@@ -53,6 +53,7 @@ storiesOf('Table', module)
 
     const tableProperties: TableProperties = {
       tableClassname: '',
+      rowOnClickAccessor: 'rowOnClick',
       columns: [
         {
           accessor: 'firstName',
@@ -152,15 +153,6 @@ storiesOf('Table', module)
           disableFiltering: false,
           disableSorting: false,
           filterPlaceholder: 'Search in dates',
-        },
-        {
-          accessor: 'rowOnClick',
-          type: 'invisible',
-          title: '',
-          headerClassName: '',
-          className: 'pl-3 fixoverflow',
-          disableFiltering: true,
-          disableSorting: true,
         },
       ],
     }

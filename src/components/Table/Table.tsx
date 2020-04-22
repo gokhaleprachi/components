@@ -1,4 +1,5 @@
 import React from 'react'
+import { get } from 'lodash'
 import { useTable, useFilters, useSortBy, usePagination, TableInstance } from 'react-table'
 import { generateColumns } from './helper'
 import { Data, TableProperties, GeneratedColumn } from './interfaces'
@@ -65,7 +66,10 @@ function Table({ data, tableProperties }: Props) {
           {page.map((row) => {
             prepareRow(row)
             return (
-              <tr {...row.getRowProps()} onClick={row.values.rowOnClick}>
+              <tr
+                {...row.getRowProps()}
+                onClick={get(row.original, tableProperties.rowOnClickAccessor, '')}
+              >
                 {row.cells.map((cell: any) => (
                   <td
                     {...cell.getCellProps()}

@@ -2,12 +2,13 @@ import { ColumnInstance, UseSortByColumnProps, UseFiltersColumnProps } from 'rea
 
 export interface TableProperties {
   tableClassname: string
+  rowOnClickAccessor: string
   columns: CustomColumn[]
 }
 
 export interface CustomColumn {
   accessor: string
-  type: 'string' | 'boolean' | 'date' | 'invisible'
+  type: 'string' | 'boolean' | 'date'
   title: string
   label?: string
   filterPlaceholder?: string
